@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    // ... other options
+  },
+  "extends": "@react-native/typescript-config/tsconfig.json"
+}
