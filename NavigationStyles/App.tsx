@@ -1,57 +1,57 @@
-import React from 'react';
-import { SafeAreaView, StatusBar, useWindowDimensions } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, StatusBar, useColorScheme, useWindowDimensions } from 'react-native';
 import { MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AppNavigator from './navigation/AppNavigator';
 import CustomDrawerScreen from './components/CustomDrawerScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MyThemeProvider from './MyThemeProvider';
-import { ThemeProvider, useThemeContext } from './ThemeProvider';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function App(): React.JSX.Element {
+  const colorScheme = useColorScheme();
+  const [isDarkTheme, setIsDarkTheme] = useState(colorScheme === 'dark');
+  const paperTheme = isDarkTheme ? MD3DarkTheme : MD3LightTheme;
   const { width: deviceWidth, height: deviceHeight } = useWindowDimensions();
   const Drawer = createDrawerNavigator();
 
   return (
-    <ThemeProvider>
-      <PaperProvider>
-        <MyThemeProvider>
-          <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar />
-            <NavigationContainer>
-              <Drawer.Navigator
-                drawerContent={(props) => <CustomDrawerScreen {...props} deviceWidth={deviceWidth} deviceHeight={deviceHeight} />}
-                screenOptions={{
-                  drawerStyle: {
-                    width: 200,
-                  },
-                }}
-              >
-                <Drawer.Screen
-                  name="AppNavigator"
-                  children={() => <AppNavigator deviceWidth={deviceWidth} deviceHeight={deviceHeight} />}
-                  initialParams={{ deviceWidth, deviceHeight }}
-                  options={{
-                    headerTitle: 'Deepak Kaligotla',
-                    headerTitleAlign: 'center',
-                    headerRight: () => {
-                      const { isDarkMode, toggleTheme } = useThemeContext();
-                      return (
-                        <MaterialCommunityIcons.Button
-                          name={isDarkMode ? 'theme-light-dark' : 'theme-light-dark'}
-                          onPress={toggleTheme}
-                        />
-                      );
-                    },
-                  }}
-                />
-              </Drawer.Navigator>
-            </NavigationContainer>
-          </SafeAreaView>
-        </MyThemeProvider>
-      </PaperProvider>
-    </ThemeProvider>
+    <PaperProvider theme={paperTheme}>
+      <SafeAreaView style={{ backgroundColor: paperTheme.colors.background, flex: 1 }}>
+        <StatusBar />
+        <NavigationContainer theme={isDarkTheme ? DarkTheme : DefaultTheme}>
+          <Drawer.Navigator
+            drawerContent={(props) => <CustomDrawerScreen {...props} deviceWidth={deviceWidth} deviceHeight={deviceHeight} />}
+            screenOptions={{
+              drawerStyle: {
+                width: 200,
+              },
+              drawerActiveBackgroundColor: paperTheme.colors.onBackground,
+              headerTintColor: isDarkTheme ? '#fff' : '#000'
+            }}
+          >
+            <Drawer.Screen
+              name="AppNavigator"
+              children={() => <AppNavigator deviceWidth={deviceWidth} deviceHeight={deviceHeight} />}
+              initialParams={{ deviceWidth, deviceHeight }}
+              options={{
+                headerTitle: '',
+                headerTitleAlign: 'center',
+                headerRight: () => (
+                  <MaterialCommunityIcons.Button
+                    name={isDarkTheme ? 'theme-light-dark' : 'theme-light-dark'}
+                    color={isDarkTheme ? '#000' : '#fff'}
+                    backgroundColor={isDarkTheme ? '#fff' : '#000'}
+                    onPress={() => setIsDarkTheme((prev) => !prev)}
+                  />
+                ),
+              }}
+            />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }
 
