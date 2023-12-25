@@ -1,4 +1,3 @@
-// navigation/MainNavigator.tsx
 import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
@@ -41,7 +40,7 @@ function MainNavigator({ deviceWidth, deviceHeight }: any): React.JSX.Element {
       <BottomTab.Screen
         name="Settings"
         component={SettingsScreen}
-        initialParams={{ deviceWidth, deviceHeight }} // Pass the parameters here
+        initialParams={{ deviceWidth, deviceHeight }}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({ size }) => (
@@ -55,7 +54,7 @@ function MainNavigator({ deviceWidth, deviceHeight }: any): React.JSX.Element {
       <BottomTab.Screen
         name="About"
         component={AboutScreen}
-        initialParams={{ deviceWidth, deviceHeight }} // Pass the parameters here
+        initialParams={{ deviceWidth, deviceHeight }}
         options={{
           tabBarLabel: 'About',
           tabBarIcon: ({ size }) => (

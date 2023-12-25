@@ -1,15 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ColorSchemeName } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import AntDesign from "react-native-vector-icons/AntDesign"
 
 function HomeScreen({ route }: any): React.JSX.Element {
   const { deviceWidth, deviceHeight } = route.params;
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home Screen</Text>
-      <Text>Device Width: {deviceWidth}</Text>
-      <Text>Device Height: {deviceHeight}</Text>
-    </View>
+    <PaperProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <AntDesign name='home' size={deviceWidth/2}></AntDesign>
+          <Text>Home Screen</Text>
+          <Text>Device Width: {deviceWidth}</Text>
+          <Text>Device Height: {deviceHeight}</Text>
+        </View>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }
+
+const styles = StyleSheet.create({
+
+});
 
 export default HomeScreen;

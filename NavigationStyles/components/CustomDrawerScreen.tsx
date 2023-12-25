@@ -3,6 +3,7 @@ import React from 'react';
 import DrawerContent from './DrawerContent';
 
 interface CustomDrawerScreenProps {
+  navigation: any
   deviceWidth: number;
   deviceHeight: number;
 }
