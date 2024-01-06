@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "ios",
+			"path": "NavigationStyles",
+			"problemMatcher": [],
+			"label": "npm: ios - NavigationStyles",
+			"detail": "react-native run-ios --simulator \"iPhone 15 Pro Max\"",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
