@@ -2,7 +2,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainNavigator from './MainNavigator';
-import CustomDrawerScreen from '../components/CustomDrawerScreen';
+import CustomDrawerScreen from './CustomDrawerScreen';
 import { useTheme } from '../theme/ThemeContext';
 
 const Drawer = createDrawerNavigator();

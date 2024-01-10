@@ -14,7 +14,7 @@ function AboutScreen({ route }: any): React.JSX.Element {
     <PaperProvider>
       <SafeAreaView style={commonStyles.view}>
         <View style={commonStyles.view}>
-          <MaterialCommunityIcons name='information-variant' size={useWindowDimensions().width/2}  color={commonStyles.text.color}/>
+          <MaterialCommunityIcons name='information-variant' size={useWindowDimensions().width/4}  color={commonStyles.text.color}/>
           <Text style={commonStyles.text}>About Screen</Text>
         </View>
       </SafeAreaView>

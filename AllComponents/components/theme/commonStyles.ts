@@ -7,10 +7,12 @@ export const commonStyles = (isDarkTheme: boolean) => {
   const controllerColor = isDarkTheme ? 'white' : 'black';
   const cardColor = isDarkTheme ? 'black' : 'black';
   const cardBackground = isDarkTheme ? 'white' : 'transparent';
+  const iconColor = isDarkTheme ? 'white' : 'black';
 
   return StyleSheet.create({
     text: {
       color: color,
+      textAlign: 'center'
     },
     button: {
       color: color,
@@ -34,6 +36,11 @@ export const commonStyles = (isDarkTheme: boolean) => {
       padding: 16,
       borderRadius: 8,
       margin: 8,
+      alignItems: 'center', 
+      justifyContent: 'center'
+    },
+    icon: {
+
     }
   });
 };

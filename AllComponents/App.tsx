@@ -3,11 +3,11 @@ import { SafeAreaView, StatusBar, useColorScheme, useWindowDimensions } from 're
 import { MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import AppNavigator from './navigation/AppNavigator';
-import CustomDrawerScreen from './components/CustomDrawerScreen';
+import AppNavigator from './components/navigation/AppNavigator';
+import CustomDrawerScreen from './components/navigation/CustomDrawerScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { useTheme } from './theme/ThemeContext';
+import { useTheme } from './components/theme/ThemeContext';
 
 function App(): React.JSX.Element {
   const { theme, toggleTheme, isDarkTheme, commonStyles } = useTheme();
