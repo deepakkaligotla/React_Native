@@ -121,6 +121,10 @@ class DatePicker: NSObject, RCTBridgeModule {
         return "DatePicker"
     }
 
+    @objc static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
+
     @objc func openDatePicker(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
